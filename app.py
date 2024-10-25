@@ -1,19 +1,13 @@
 import streamlit as st
+from query_data import query_rag
 import os
 from dotenv import load_dotenv
-from query_data import query_rag
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv(dotenv_path='env/.env')
 
 # Get OpenAI API key from environment variable
 openai_api_key = os.getenv("OPENAI_API_KEY")
-
-# Check if the API key is set
-if openai_api_key is None:
-    st.error("OpenAI API key not found. Please set it in the .env file.")
-    st.stop()  # Stop the app if the API key is not found
-query_rag
 
 # Title of the app
 st.title("Game Rules Chatbot")
@@ -26,12 +20,9 @@ embedding_type = st.selectbox("Select embedding type:", ["openai", "ollama"], in
 
 # Button to submit the query
 if st.button("Get Answer"):
-    if query_text:  # Check if the user has entered a question
-        try:
-            # Call the query_rag function and get the response
-            response = query_rag(query_text, embedding_type)
-            st.write("Response:", response)
-        except Exception as e:  # Catch any errors during query processing
-            st.error(f"Error: {str(e)}")
+    if query_text:
+        # Call the query_rag function and get the response
+        response = query_rag(query_text, embedding_type)
+        st.write("Response:", response)
     else:
-        st.warning("Please enter a question.")  # Warning if no question is entered
+        st.write("Please enter a question.")
