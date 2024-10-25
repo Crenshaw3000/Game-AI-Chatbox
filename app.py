@@ -13,6 +13,7 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 if openai_api_key is None:
     st.error("OpenAI API key not found. Please set it in the .env file.")
     st.stop()  # Stop the app if the API key is not found
+query_rag
 
 # Title of the app
 st.title("Game Rules Chatbot")
