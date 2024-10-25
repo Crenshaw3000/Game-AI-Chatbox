@@ -1,5 +1,6 @@
 import streamlit as st
 from query_data import query_rag
+from langchain_chroma import Chroma 
 
 # Title of the app
 st.title("Game Rules Chatbot")
@@ -8,7 +9,7 @@ st.title("Game Rules Chatbot")
 query_text = st.text_input("Ask a question about Monopoly, Uno, or Yahtzee rules:")
 
 # Select embedding type
-embedding_type = st.selectbox("Select embedding type:", ["openai", "ollama"], index=1)
+embedding_type = st.selectbox("Select embedding type:", ["openai", "ollama"], index=0)
 
 # Button to submit the query
 if st.button("Get Answer"):
