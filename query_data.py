@@ -22,8 +22,8 @@ def main():
     # Create CLI.
     parser = argparse.ArgumentParser()
     parser.add_argument("query_text", type=str, help="The query text.")
-    parser.add_argument("--embedding-type", type=str, default="openai",
-                        help="Type of embedding to use: openai, bedrock, or ollama.")
+    parser.add_argument("--embedding-type", type=str, choices=["mistral", "llama3"], default="mistral",
+                        help="Type of embedding to use: mistral or llama3.")
     args = parser.parse_args()
 
     query_text = args.query_text
@@ -42,9 +42,8 @@ def query_rag(query_text: str, embedding_type: str):
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=context_text, question=query_text)
 
-
-    # Invoke the model.
-    model = OllamaLLM(model="mistral")
+    # Invoke the model using the selected embedding type
+    model = OllamaLLM(model=embedding_type)
     response_text = model.invoke(prompt)
 
     sources = [doc.metadata.get("id", None) for doc, _score in results]

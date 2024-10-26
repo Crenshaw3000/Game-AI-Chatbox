@@ -14,8 +14,9 @@ def main():
     # Check if the database should be cleared (using the --reset flag).
     parser = argparse.ArgumentParser()
     parser.add_argument("--reset", action="store_true", help="Reset the database.")
-    parser.add_argument("--embedding-type", type=str, default="openai", 
-                        help="Type of embedding to use: openai, bedrock, or ollama.")
+    parser.add_argument("--embedding-type", type=str, default="mistral", 
+                        choices=["mistral", "llama3"],  # Adjusted choices
+                        help="Type of embedding to use: mistral or llama3.")
     args = parser.parse_args()
 
     if args.reset:

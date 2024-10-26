@@ -1,13 +1,5 @@
 import streamlit as st
-from query_data import query_rag
-import os
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv(dotenv_path='env/.env')
-
-# Get OpenAI API key from environment variable
-openai_api_key = os.getenv("OPENAI_API_KEY")
+from query_data import query_rag  # Assuming query_rag uses get_embedding_function internally
 
 # Title of the app
 st.title("Game Rules Chatbot")
@@ -16,7 +8,7 @@ st.title("Game Rules Chatbot")
 query_text = st.text_input("Ask a question about Monopoly, Uno, or Yahtzee rules:")
 
 # Select embedding type
-embedding_type = st.selectbox("Select embedding type:", ["openai", "ollama"], index=0)
+embedding_type = st.selectbox("Select embedding type:", ["mistral", "llama3"], index=0)
 
 # Button to submit the query
 if st.button("Get Answer"):
