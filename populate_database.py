@@ -15,8 +15,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--reset", action="store_true", help="Reset the database.")
     parser.add_argument("--embedding-type", type=str, default="mistral", 
-                        choices=["mistral", "llama3"],  # Adjusted choices
-                        help="Type of embedding to use: mistral or llama3.")
+                        choices=["mistral"],  # Adjusted choices
+                        help="Type of embedding to use: mistral.")
     args = parser.parse_args()
 
     if args.reset:

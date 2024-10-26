@@ -8,7 +8,7 @@ st.title("Game Rules Chatbot")
 query_text = st.text_input("Ask a question about Monopoly, Uno, or Yahtzee rules:")
 
 # Select embedding type
-embedding_type = st.selectbox("Select embedding type:", ["mistral", "llama3"], index=0)
+embedding_type = st.selectbox("Select embedding type:", ["mistral"], index=0)
 
 # Button to submit the query
 if st.button("Get Answer"):

@@ -22,8 +22,8 @@ def main():
     # Create CLI.
     parser = argparse.ArgumentParser()
     parser.add_argument("query_text", type=str, help="The query text.")
-    parser.add_argument("--embedding-type", type=str, choices=["mistral", "llama3"], default="mistral",
-                        help="Type of embedding to use: mistral or llama3.")
+    parser.add_argument("--embedding-type", type=str, choices=["mistral"], default="mistral",
+                        help="Type of embedding to use: mistral.")
     args = parser.parse_args()
 
     query_text = args.query_text
